@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface AuthorRepository extends JpaRepository<Author, Long> {
-
+    public Author getAuthorByEmail(String email);
 }

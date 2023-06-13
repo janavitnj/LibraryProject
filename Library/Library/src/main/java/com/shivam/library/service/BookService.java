@@ -12,29 +12,27 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+
 @Service
-public class BookService implements BookServiceImpl
-{
+public class BookService implements BookServiceImpl {
     @Autowired
     private BookRepository bookRepo;
     @Autowired
     ApprovedService aser;
+
     @Transactional
     @Override
     public void createBook(Book book) throws PlagiarismFound {
 
         bookRepo.save(book);
-        Approved a=new Approved();
-        if(book.getPlagPer()<10)
-        {
+        Approved a = new Approved();
+        if (book.getPlagPer() < 10) {
             a.setBookId(book.getBookId());
             a.setBookName(book.getBookName());
             a.setAuthorId(book.getAuthorId());
             aser.addApproval(a);
-        }
-        else
-        {
-           throw new PlagiarismFound("Book not approved , plagiarism is found to be more than 10%");
+        } else {
+            throw new PlagiarismFound("Book not approved , plagiarism is found to be more than 10%");
         }
 
     }
@@ -54,6 +52,8 @@ public class BookService implements BookServiceImpl
         return null;
     }
 
-
+    public List<Book> getBooksListByAuthorId(Long authorId) {
+        return bookRepo.getBooksListByAuthorId(authorId);
+    }
 
 }

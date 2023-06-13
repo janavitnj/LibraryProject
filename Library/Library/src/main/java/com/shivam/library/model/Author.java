@@ -20,11 +20,16 @@ public class Author {
     private long authorId;
     private String authorName;
     private String email;
+    private String password;
     @OneToMany(targetEntity = Book.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "author")
-    @JsonManagedReference(value="book_ref")
+    @JsonManagedReference(value = "book_ref")
     private List<Book> books;
 
     @ManyToMany(mappedBy = "authors")
     private List<Student> students = new ArrayList<>();
 
+    @Override
+    public String toString() {
+        return "Name: " + authorName + ", Email: " + email + ", Id:" + authorId + ", Password: " + password;
+    }
 }

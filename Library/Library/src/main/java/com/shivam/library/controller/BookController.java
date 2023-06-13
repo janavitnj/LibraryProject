@@ -8,20 +8,26 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 public class BookController {
     @Autowired
     private BookService bookService;
-    @GetMapping("/books")//mapping for GET request
-    public List<Book> getAllDepartments(){
+
+    @GetMapping("/books") // mapping for GET request
+    public List<Book> getAllDepartments() {
 
         return bookService.getBooksList();
     }
-    //mapping for POST request
+
+    // mapping for POST request
     @PostMapping("/books")
     public void createBook(@RequestBody Book book) throws PlagiarismFound {
-         bookService.createBook(book);
+        bookService.createBook(book);
     }
 
-
+    @GetMapping("/books/id/{id}")
+    public List<Book> getBookByAuthorId(@PathVariable("id") Long authorId) {
+        return bookService.getBooksListByAuthorId(authorId);
+    }
 }

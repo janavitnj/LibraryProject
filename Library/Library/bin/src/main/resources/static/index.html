@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+
+    <div id="container">
+        <input type = "button" onclick = "func()" value = "Display"> 
+    </div>
+    <table id="bookTable" style="border:1px solid red"></table>
+
+    <script>
+
+
+      function createTable(data) {
+        console.log(data)
+            const table = document.getElementById('bookTable');
+
+            const headerRow = document.createElement('tr');
+            headerRow.innerHTML = '<th>Book ID</th><th>Book Name</th><th>Plagper</th><th>Author ID</th><th>Manager ID</th>';
+            table.appendChild(headerRow);
+
+
+            if (Array.isArray(data)) {
+                data.forEach((book) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `<td>${book.bookId}</td><td>${book.bookName}</td><td>${book.plagPer}</td><td>${book.authorId}</td><td>${book.managerId}</td>`;
+                    table.appendChild(row);
+                });
+            } else {
+                console.error('Data is not an array:', data);
+            }
+        }
+        var func = () => {
+
+            fetch("http://localhost:8081/books")
+                .then(response => response.json())
+                .then(result => createTable(result))
+                .catch(error => console.log('error', error));
+        }
+
+    </script>
+    
+</body>
+</html>
