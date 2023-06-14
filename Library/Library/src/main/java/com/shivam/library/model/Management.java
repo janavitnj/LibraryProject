@@ -20,13 +20,10 @@ public class Management {
     @GeneratedValue
     private Long managerId;
     private String name;
+    private String email;
+    private String password;
     @OneToMany(targetEntity = Book.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "management")
-    @JsonManagedReference(value="man_ref")
+    @JsonManagedReference(value = "man_ref")
     private List<Book> books;
-
-
-
-
-
 
 }

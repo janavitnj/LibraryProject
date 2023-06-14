@@ -22,7 +22,7 @@ public class BookService implements BookServiceImpl {
 
     @Transactional
     @Override
-    public void createBook(Book book) throws PlagiarismFound {
+    public boolean createBook(Book book) throws PlagiarismFound {
 
         bookRepo.save(book);
         Approved a = new Approved();
@@ -31,8 +31,9 @@ public class BookService implements BookServiceImpl {
             a.setBookName(book.getBookName());
             a.setAuthorId(book.getAuthorId());
             aser.addApproval(a);
+            return true;
         } else {
-            throw new PlagiarismFound("Book not approved , plagiarism is found to be more than 10%");
+            return false;
         }
 
     }

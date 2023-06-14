@@ -1,0 +1,17 @@
+<div class="dropdown">
+  <select
+    name="roles"
+    id="roles"
+    (click)="handleClick()"
+    [(ngModel)]="role"
+    class="btn btn-primary text-light"
+  >
+    <option class="d-none" value="null" selected>Who are you?</option>
+    <option class="bg-light text-dark text-center p-0" value="author">
+      Author
+    </option>
+    <option class="bg-light text-dark text-center p-0" value="manager">
+      Manager
+    </option>
+  </select>
+</div>

@@ -14,27 +14,27 @@ import java.util.List;
 @RestController
 public class AuthorController {
     @Autowired
-    private AuthorService bookService;
+    private AuthorService authorService;
 
     @GetMapping("/author") // mapping for GET request
     public List<Author> getAllBooks() {
 
-        return bookService.getAuthorsList();
+        return authorService.getAuthorsList();
     }
 
     // mapping for POST request
     @PostMapping("/author")
     public Author createAuthor(@RequestBody Author book) {
-        return bookService.createAuthor(book);
+        return authorService.createAuthor(book);
     }
 
     @GetMapping("/author/id/{id}")
     public Author getAuthorById(@PathVariable("id") Long authorId) {
-        return bookService.getAuthorById(authorId);
+        return authorService.getAuthorById(authorId);
     }
 
     @PostMapping("/author/login")
     public LoginResponse getAuthorByEmail(@RequestBody LoginRequest request) {
-        return bookService.getAuthorByEmail(request);
+        return authorService.getAuthorByEmail(request);
     }
 }

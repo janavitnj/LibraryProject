@@ -1,1 +1,18 @@
-<p>appointments works!</p>
+<div class="appointments align-items-center">
+  <h3 class="text-center my-4">My Appointments</h3>
+  <div
+    class="col-8 d-flex flex-row justify-content-around alignt-items-center py-3 my-2 mx-auto rounded border"
+  >
+    <p>Name</p>
+    <p>Date of Appointment</p>
+    <p>Email</p>
+  </div>
+  <div
+    *ngFor="let student of students"
+    class="appointment col-8 d-flex flex-row justify-content-around alignt-items-center py-3 my-2 mx-auto rounded border"
+  >
+    <p>{{ student.name }}</p>
+    <p>{{ student.appointmentDate }}</p>
+    <p>{{ student.email }}</p>
+  </div>
+</div>

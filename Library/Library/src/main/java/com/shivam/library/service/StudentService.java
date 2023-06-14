@@ -5,6 +5,10 @@ import com.shivam.library.model.Author;
 import com.shivam.library.model.Student;
 import com.shivam.library.repository.AuthorRepository;
 import com.shivam.library.repository.StudentRepository;
+import com.shivam.library.request.models.AppointmentRequest;
+import com.shivam.library.responses.AppointmentResponse;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,8 +35,7 @@ public class StudentService {
     }
 
     public Student addStudent(Student student) {
-        studentRepository.save(student);
-        return student;
+        return studentRepository.save(student);
     }
 
     public void updateStudent(Long id, Student studentDetails) {
@@ -49,6 +52,7 @@ public class StudentService {
         Student student = getStudentById(id);
         studentRepository.delete(student);
     }
+
     public void addAuthorToStudent(Long authorId, Long studentId) {
         Optional<Author> optionalAuthor = authorRepository.findById(authorId);
         Optional<Student> optionalStudent = studentRepository.findById(studentId);
@@ -59,14 +63,13 @@ public class StudentService {
 
             student.getAuthors().add(author);
             author.getStudents().add(student);
-
             studentRepository.save(student);
             authorRepository.save(author);
         }
     }
 
-
     public void removeAuthorFromStudent(Long authorId, Long studentId) {
+
         Optional<Author> optionalAuthor = authorRepository.findById(authorId);
         Optional<Student> optionalStudent = studentRepository.findById(studentId);
 
@@ -82,4 +85,10 @@ public class StudentService {
         }
     }
 
+    public AppointmentResponse addAppointment(AppointmentRequest request) {
+
+        // System.out.println(request.getAuthorId() + " --- " + newStudent.getId());
+        // this.addAuthorToStudent(request.getAuthorId(), newStudent.getId());
+        return new AppointmentResponse(HttpStatus.ACCEPTED, "Successful");
+    }
 }

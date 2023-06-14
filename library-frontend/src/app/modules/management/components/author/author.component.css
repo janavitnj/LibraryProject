@@ -1,0 +1,10 @@
+.book{
+    background-color: red;
+    color:white;
+    
+}
+
+.book.approved{
+    background-color: greenyellow;
+    color:black;
+}

@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ManagementRepository extends JpaRepository<Management, Long> {
+    public Management getManagementByEmail(String email);
 }

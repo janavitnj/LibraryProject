@@ -1,5 +1,5 @@
 export interface Book {
-    bookId: number,
+    bookId?: number,
     bookName: string,
     plagPer: number,
     authorId: number,
@@ -11,9 +11,18 @@ export interface Author {
     authorName: string,
     email: string,
     books: Book[],
-    students?: Student[]
+    students: Student[]
 }
 
 export interface Student {
+    name: string,
+    id: number,
+    appointmentDate: string,
+    email: string
+}
 
+
+export interface Appointment {
+    studentId: number,
+    authorId: number
 }

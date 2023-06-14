@@ -1,0 +1,97 @@
+<div class="">
+  <form
+    *ngIf="!registered"
+    action=""
+    class="col-6 mx-auto border p-4 rounded mt-5 appointment-form"
+  >
+    <h3 class="text-center mt-2 mb-4">Appointment Form</h3>
+    <div class="input-group border p-3 rounded mb-3 align-items-center">
+      <label class="form-label me-3" for="name">Name </label
+      ><input
+        [(ngModel)]="name"
+        class="form-control rounded"
+        type="email"
+        id="name"
+        name="name"
+        (input)="handleInput()"
+      />
+    </div>
+    <div class="input-group border p-3 rounded mb-3 align-items-center">
+      <label class="form-label me-3" for="email">Email </label
+      ><input
+        [(ngModel)]="email"
+        class="form-control rounded"
+        type="text"
+        id="email"
+        name="email"
+        (input)="handleInput()"
+      />
+    </div>
+
+    <div class="input-group border p-3 rounded mb-3 align-items-center">
+      <label class="form-label me-3" for="date">Appointment Date </label
+      ><input
+        [(ngModel)]="date"
+        class="form-control rounded"
+        type="datetime-local"
+        id="date"
+        name="date"
+        (input)="handleInput()"
+      />
+    </div>
+    <p class="text-danger fw-semibold my-3 text-center" *ngIf="formError">
+      {{ formError }}
+    </p>
+    <div class="input-group">
+      <button
+        class="btn btn-primary mx-auto"
+        (click)="onSubmit()"
+        type="submit"
+      >
+        Submit
+      </button>
+    </div>
+    <p class="text-start">
+      <a class="student-form-link" routerLink="/login"
+        ><i class="bi bi-arrow-left"></i> Back to login</a
+      >
+    </p>
+  </form>
+</div>
+<div
+  *ngIf="registered"
+  class="col-6 mx-auto border appointment-form p-4 rounded mt-5"
+>
+  <p>{{ name }}</p>
+  <p>{{ email }}</p>
+  <p>{{ date }}</p>
+  <form>
+    <div class="input-group border p-3 rounded mb-3 align-items-center">
+      <label class="form-label me-3" for="author">Author </label>
+      <select
+        name="roles"
+        id="roles"
+        [(ngModel)]="authorId"
+        class="btn btn-primary text-light rounded"
+      >
+        <option class="d-none" value="0" selected>Select Author</option>
+        <option
+          *ngFor="let author of authors"
+          class="bg-light text-dark text-center p-0"
+          value="{{ author.authorId }}"
+        >
+          {{ author.authorName }}
+        </option>
+      </select>
+    </div>
+    <div class="input-group my-3 align-items-center">
+      <button
+        class="btn btn-primary mx-auto"
+        type="submit"
+        (click)="onConfirm()"
+      >
+        Confirm Appointment
+      </button>
+    </div>
+  </form>
+</div>

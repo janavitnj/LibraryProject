@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Author, Book } from '../interfaces';
+import { Author, Book, Student } from '../interfaces';
 const headerOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
@@ -13,7 +13,9 @@ const headerOptions = {
 })
 export class AuthorService {
   private apiUrl: string = "http://localhost:8081"
-  private authorId: number = 103
+  private authorId!: number
+  private students!: Student[]
+
   constructor(private httpClient: HttpClient) { }
 
   getBooksByAuthor(): Observable<Book[]> {
@@ -32,5 +34,12 @@ export class AuthorService {
     return this.httpClient.post<any>(`${this.apiUrl}/author/login`, credentials)
   }
 
+  setStudentsAppointemnts(students: Student[]) {
+    this.students = students
+  }
+
+  getAppointements(): Student[] {
+    return this.students
+  }
 }
 

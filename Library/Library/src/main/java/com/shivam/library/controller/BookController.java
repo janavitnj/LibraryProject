@@ -1,9 +1,14 @@
 package com.shivam.library.controller;
 
 import com.shivam.library.model.Book;
+import com.shivam.library.responses.AddBookResponse;
 import com.shivam.library.service.BookService;
 import com.shivam.library.service.PlagiarismFound;
+
+import ch.qos.logback.core.encoder.EchoEncoder;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,8 +27,13 @@ public class BookController {
 
     // mapping for POST request
     @PostMapping("/books")
-    public void createBook(@RequestBody Book book) throws PlagiarismFound {
-        bookService.createBook(book);
+    public AddBookResponse createBook(@RequestBody Book book) throws PlagiarismFound {
+
+        if (bookService.createBook(book))
+            return new AddBookResponse(HttpStatus.ACCEPTED, "Book approved");
+        else {
+            return new AddBookResponse(HttpStatus.ACCEPTED, "Book added without approval");
+        }
     }
 
     @GetMapping("/books/id/{id}")

@@ -1,6 +1,9 @@
 <div class="">
-  <form action="" class="w-50 mx-auto border border-dark p-3 rounded mt-5">
-    <h3 class="text-center mt-2 mb-4">Author Login</h3>
+  <form action="" class="login-form col-6 mx-auto border p-4 rounded mt-5">
+    <h3 class="text-center mt-2 mb-4">Login</h3>
+    <div class="mb-3 text-center">
+      <app-dropdown (event)="receiveRole($event)"></app-dropdown>
+    </div>
     <div class="input-group border p-3 rounded mb-3 align-items-center">
       <label class="form-label me-3" for="email">Email </label
       ><input
@@ -9,6 +12,7 @@
         type="email"
         id="email"
         name="email"
+        (input)="handleInput()"
       />
     </div>
     <div class="input-group border p-3 rounded mb-3 align-items-center">
@@ -19,8 +23,12 @@
         type="password"
         id="password"
         name="password"
+        (input)="handleInput()"
       />
     </div>
+    <p class="text-danger fw-semibold my-3 text-center" *ngIf="formError">
+      {{ formError }}
+    </p>
     <div class="input-group">
       <button
         class="btn btn-primary mx-auto"
@@ -30,5 +38,10 @@
         Submit
       </button>
     </div>
+    <p class="text-end">
+      <a class="student-form-link" routerLink="/appointment-form"
+        >Are you a student? <i class="bi bi-arrow-right"></i
+      ></a>
+    </p>
   </form>
 </div>

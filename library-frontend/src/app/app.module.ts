@@ -6,18 +6,26 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { LoginComponent } from './components/login/login.component';
+import { DropdownModule } from 'primeng/dropdown';
+import { DropdownComponent } from './components/dropdown/dropdown.component';
+import { AppointmentFormComponent } from './components/appointment-form/appointment-form.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     NotfoundComponent,
-    LoginComponent
+    LoginComponent,
+    DropdownComponent,
+    AppointmentFormComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    DropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]

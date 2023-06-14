@@ -1,0 +1,26 @@
+<div
+  class="p-3 border rounded mb-3"
+  style="background-color: rgb(247, 236, 220)"
+>
+  <div class="author-details rounded p-3 mx-auto my-2 bg-primary text-light">
+    <div class="row text-center col-10 mx-auto rounded py-3">
+      <p class="m-0 col-5 fs-4">{{ author.authorName }}</p>
+      <p class="m-0 col-5 fs-4">{{ author.email }}</p>
+    </div>
+    <ul
+      class="book-list row row-cols-4 g-3 text-center p-0 m-0 justify-content-around rounded py-2"
+      style="list-style-type: none; background-color: rgb(247, 236, 220)"
+    >
+      <li
+        *ngFor="let book of author.books"
+        class="book col border rounded d-flex flex-row justify-content-around align-items-center m-2"
+        style="height: 5rem"
+        [ngClass]="{ approved: book.plagPer < 11 }"
+      >
+        <p class="p-0 m-0 fs-5">{{ book.bookName | Capitalize }}</p>
+        <p class="p-0 m-0 fs-5">{{ book.plagPer }}%</p>
+      </li>
+    </ul>
+  </div>
+</div>
+<hr />

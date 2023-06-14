@@ -8,6 +8,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AppointmentsComponent } from './components/appointments/appointments.component';
 import { BookComponent } from './components/book/book.component';
+import { AddBookComponent } from './components/add-book/add-book.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { BookComponent } from './components/book/book.component';
     DashboardComponent,
     HeaderComponent,
     AppointmentsComponent,
-    BookComponent
+    BookComponent,
+    AddBookComponent
   ],
   imports: [
     CommonModule,

@@ -12,5 +12,5 @@ import lombok.NoArgsConstructor;
 public class LoginResponse {
     public HttpStatus status;
     public String message;
-    public Long authorId;
+    public Long Id;
 }

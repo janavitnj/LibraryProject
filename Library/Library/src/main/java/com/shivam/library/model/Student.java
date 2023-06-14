@@ -2,49 +2,34 @@ package com.shivam.library.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Student {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String appointmentDate;
+    private String email;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(name = "student_author",
-            joinColumns = @JoinColumn(name = "student_id"),
-            inverseJoinColumns = @JoinColumn(name = "author_id"))
+    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @JoinTable(name = "student_author", joinColumns = @JoinColumn(name = "student_id"), inverseJoinColumns = @JoinColumn(name = "author_id"))
     @JsonBackReference
     private List<Author> authors;
 
-
-    public Student(Long id, String name, Author author, String appointmentDate) {
-        this.id = id;
-        this.name = name;
-        this.appointmentDate = appointmentDate;
+    @Override
+    public String toString() {
+        return "Student [id=" + id + ", name=" + name + ", appointmentDate=" + appointmentDate + ", email=" + email
+                + ", authors=" + authors + "]";
     }
-
-    public Student() {
-
-    }
-
-    // Getters and setters
-
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-
-
-
-    public String getAppointmentDate() { return appointmentDate; }
-    public void setAppointmentDate(String appointmentDate) { this.appointmentDate = appointmentDate; }
 }
-

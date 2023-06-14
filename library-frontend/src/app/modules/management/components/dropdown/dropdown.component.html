@@ -1,0 +1,18 @@
+<div>
+  <select
+    name="roles"
+    id="roles"
+    (click)="handleClick()"
+    [(ngModel)]="authorId"
+    class="btn btn-primary text-light"
+  >
+    <option class="d-none" value="0" selected>Select Author</option>
+    <option
+      *ngFor="let author of authors"
+      class="bg-light text-dark text-center p-0"
+      value="{{author.authorId}}"
+    >
+      {{author.authorName}}
+    </option>
+  </select>
+</div>

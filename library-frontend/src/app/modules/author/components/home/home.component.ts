@@ -13,10 +13,10 @@ export class HomeComponent implements OnInit {
     authorService.getUserDetails().subscribe(
       (author) => {
         this.authorDetails = author
+        authorService.setStudentsAppointemnts(author.students)
       }
     );
   }
-
   ngOnInit(): void {
 
   }

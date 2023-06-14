@@ -1,8 +1,14 @@
 .book{
-    background-color: antiquewhite ;
+    
+    background-color: red;
+    color:white;
 }
-
 .book p{
     margin:0;
     padding: 0;
+
+}
+.book.approved{
+    background-color: greenyellow;
+    color:black;
 }

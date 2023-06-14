@@ -1,0 +1,36 @@
+<div class="">
+  <h3 class="text-center">Add new Book</h3>
+  <form action="" class="col-6 mx-auto">
+    <div class="input-group border p-3 rounded mb-3 align-items-center">
+      <label class="form-label me-3" for="bookName">Book Name </label
+      ><input
+        [(ngModel)]="bookName"
+        class="form-control rounded"
+        type="bookName"
+        id="bookName"
+        name="bookName"
+        (input)="handleInput()"
+      />
+    </div>
+    <div
+      class="input-group border p-3 rounded mb-3 d-flex flex-row justify-content-between align-items-center"
+    >
+      <label class="form-label" for="author">Author</label>
+      <app-dropdown id="author" (event)="receiveAuthor($event)"></app-dropdown>
+    </div>
+    <div class="input-group border p-3 rounded mb-3 align-items-center">
+      <label class="form-label me-3" for="password">Plagiarism Percentage</label
+      ><input
+        class="form-control rounded"
+        type="number"
+        id="plagPer"
+        name="plagPer"
+        (input)="handleInput()"
+        [(ngModel)]="plagiarism"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="handleSubmit()">
+      Submit
+    </button>
+  </form>
+</div>
